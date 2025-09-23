@@ -51,6 +51,7 @@
         /* NAVBAR */
         .navbar {
             width: 100%;
+            height: 90px;
             position: fixed; /* Changed to fixed for better mobile experience */
             top: 0;
             left: 0;
@@ -63,7 +64,8 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             animation: fadeIn 1s ease-in-out;
         }
-        .navbar .logo{ height: 44px; }
+        .navbar .logo{ height: 100px; }
+        .navbar .logo{ width: 100px; }
         .nav-links {
             display: flex; /* Added display flex */
             align-items: center;
@@ -97,10 +99,29 @@
             color: var(--dark);
             line-height: 1;
         }
-                .navbar img {
+        .navbar img {
             /* Logo size increased as requested */
             height: 75px; 
             border-radius: 35%;
+        }
+
+        /* Language Switcher Styles */
+        .language-switcher {
+            position: relative;
+            margin-left: 20px;
+        }
+        .language-switcher .lang-select {
+            background: none;
+            border: none;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            color: var(--dark);
+            padding: 5px;
+        }
+        .language-switcher .lang-select:hover {
+            color: var(--pink);
         }
 
 
@@ -785,6 +806,8 @@
             .testimonial-card { flex: 0 0 90vw; max-width: 90vw; padding: 25px; }
             .testimonial-card .text-content h3 { font-size: 22px; }
             .testimonial-card .text-content p { font-size: 16px; }
+            
+            .language-switcher { margin: 10px 0; }
         }
         @keyframes slideInRight {
             from { transform: translateX(100%); }
@@ -809,146 +832,152 @@
         }
         /* Styling for the Login Popup */
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
-    display: none; /* Hidden by default */
-    justify-content: center;
-    align-items: center;
-    z-index: 2000; /* Ensures it's on top of everything */
-}
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* Ensures it's on top of everything */
+        }
 
-.modal-content {
-    background-color: #fff;
-    padding: 30px 40px;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
+        .modal-content {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
 
-.close-btn {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    background-color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    font-size: 24px;
-    color: #555;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background-color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 24px;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.modal-content h2 {
-    margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-}
+        .modal-content h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
 
-.form-group {
-    text-align: left;
-    margin-bottom: 20px;
-}
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
 
-.form-group label {
-    display: block;
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 5px;
-}
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
 
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-sizing: border-box; /* Important for padding */
-    font-size: 1rem;
-}
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box; /* Important for padding */
+            font-size: 1rem;
+        }
 
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    font-size: 0.9rem;
-}
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
 
-.remember-me {
-    display: flex;
-    align-items: center;
-}
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
 
-.remember-me input {
-    margin-right: 5px;
-}
+        .remember-me input {
+            margin-right: 5px;
+        }
 
-.forgot-password {
-    color: #555;
-    text-decoration: none;
-}
+        .forgot-password {
+            color: #555;
+            text-decoration: none;
+        }
 
-.forgot-password:hover {
-    text-decoration: underline;
-}
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
 
-.login-submit-btn {
-    width: 100%;
-    padding: 14px;
-    background-color: #e91e63;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .login-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #e91e63;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.login-submit-btn:hover {
-    background-color: #d81b60;
-}
+        .login-submit-btn:hover {
+            background-color: #d81b60;
+        }
 
-.register-link {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #555;
-}
+        .register-link {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
 
-.register-link a {
-    color: #e91e63;
-    text-decoration: none;
-    font-weight: 600;
-}
+        .register-link a {
+            color: #e91e63;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-.register-link a:hover {
-    text-decoration: underline;
-}
+        .register-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
 <header class="navbar">
-    <img src="image/a-vector-graphic-showcasing-a-refined-lo_4kd9AaOOTlORYWdj4z6Utw_jmEZzTmkQuSTg2YTG7PEnA.jpeg" alt="logo" class="logo">
+    <img src="image/12345.png" alt="logo" class="logo">
     <nav>
         <ul class="nav-links">
-            <li><a href="About.html">About Us</a></li>
-            <li><a href="#testimonials-section">Browse profiles by ▾</a></li>
-            <li><a href="login-popup.html" class="login-btn" id="show-login-popup">Login</a></li>
+            <li><a href="About.html" data-lang-key="nav_about">About Us</a></li>
+            <li><a href="#testimonials-section" data-lang-key="nav_browse">Browse profiles by ▾</a></li>
+            <li><a href="login-popup.html" class="login-btn" id="show-login-popup" data-lang-key="nav_login">Login</a></li>
+             <li class="language-switcher">
+                <select id="language-selector" class="lang-select">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </li>
         </ul>
     </nav>
     <div class="nav-toggle" id="nav-toggle">
@@ -958,35 +987,35 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1>India's No.1 Muslim Matrimony</h1>
+        <h1 data-lang-key="hero_title">India's No.1 Muslim Matrimony</h1>
     </div>
 
     <div class="register-card" id="desktop-register-card">
-        <h2>Register and find your soulmate</h2>
+        <h2 data-lang-key="register_title">Register and find your soulmate</h2>
         <form id="desktop-registration-form">
             <select id="profile-for" required>
-                <option value="" disabled selected>Create Profile for</option>
-                <option value="Self">Self</option>
-                <option value="Son">Son</option>
-                <option value="Daughter">Daughter</option>
-                <option value="Friend">Friend</option>
-                <option value="Relative">Relative</option>
-                <option value="Sibling">Sibling</option>
+                <option value="" disabled selected data-lang-key="reg_create_profile_for">Create Profile for</option>
+                <option value="Self" data-lang-key="reg_self">Self</option>
+                <option value="Son" data-lang-key="reg_son">Son</option>
+                <option value="Daughter" data-lang-key="reg_daughter">Daughter</option>
+                <option value="Friend" data-lang-key="reg_friend">Friend</option>
+                <option value="Relative" data-lang-key="reg_relative">Relative</option>
+                <option value="Sibling" data-lang-key="reg_sibling">Sibling</option>
             </select>
             <div id="gender-fields" class="gender-fields">
                 <select required>
-                    <option value="" disabled selected>Select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
+                    <option value="" disabled selected data-lang-key="reg_select_gender">Select Gender</option>
+                    <option data-lang-key="reg_male">Male</option>
+                    <option data-lang-key="reg_female">Female</option>
                 </select>
             </div>
-            <input class="input" type="email" placeholder="Email address" required>
+            <input class="input" type="email" placeholder="Email address" data-lang-key="reg_email_placeholder" required>
             <div class="input-group">
                 <span>+91</span>
-                <input class="input" type="tel" placeholder="Phone number" required>
+                <input class="input" type="tel" placeholder="Phone number" data-lang-key="reg_phone_placeholder" required>
             </div>
-            <input class="input" type="password" placeholder="Create Password" required>
-            <button class="register-btn" type="submit">Register for free</button>
+            <input class="input" type="password" placeholder="Create Password" data-lang-key="reg_password_placeholder" required>
+            <button class="register-btn" type="submit" data-lang-key="reg_button">Register for free</button>
             <div id="desktop-form-message" class="form-message"></div>
         </form>
     </div>
@@ -996,31 +1025,31 @@
     <div class="modal-wrapper">
         <button class="modal-close-btn" id="modal-close-btn">❌</button>
         <div class="register-card" id="mobile-register-card">
-            <h2>Register and find your soulmate</h2>
+            <h2 data-lang-key="register_title_mobile">Register and find your soulmate</h2>
             <form id="mobile-registration-form">
                 <select id="profile-for-mobile" required>
-                    <option value="" disabled selected>Create Profile for</option>
-                    <option value="Self">Self</option>
-                    <option value="Son">Son</option>
-                    <option value="Daughter">Daughter</option>
-                    <option value="Friend">Friend</option>
-                    <option value="Relative">Relative</option>
-                    <option value="Sibling">Sibling</option>
+                     <option value="" disabled selected data-lang-key="reg_create_profile_for_mobile">Create Profile for</option>
+                    <option value="Self" data-lang-key="reg_self_mobile">Self</option>
+                    <option value="Son" data-lang-key="reg_son_mobile">Son</option>
+                    <option value="Daughter" data-lang-key="reg_daughter_mobile">Daughter</option>
+                    <option value="Friend" data-lang-key="reg_friend_mobile">Friend</option>
+                    <option value="Relative" data-lang-key="reg_relative_mobile">Relative</option>
+                    <option value="Sibling" data-lang-key="reg_sibling_mobile">Sibling</option>
                 </select>
                 <div id="gender-fields-mobile" class="gender-fields">
                     <select required>
-                        <option value="" disabled selected>Select Gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
+                        <option value="" disabled selected data-lang-key="reg_select_gender_mobile">Select Gender</option>
+                        <option data-lang-key="reg_male_mobile">Male</option>
+                        <option data-lang-key="reg_female_mobile">Female</option>
                     </select>
                 </div>
-                <input class="input" type="email" placeholder="Email address" required>
+                <input class="input" type="email" placeholder="Email address" data-lang-key="reg_email_placeholder_mobile" required>
                 <div class="input-group">
                     <span>+91</span>
-                    <input class="input" type="tel" placeholder="Phone number" required>
+                    <input class="input" type="tel" placeholder="Phone number" data-lang-key="reg_phone_placeholder_mobile" required>
                 </div>
-                <input class="input" type="password" placeholder="Create Password" required>
-                <button class="register-btn" type="submit">Register for free</button>
+                <input class="input" type="password" placeholder="Create Password" data-lang-key="reg_password_placeholder_mobile" required>
+                <button class="register-btn" type="submit" data-lang-key="reg_button_mobile">Register for free</button>
                 <div id="mobile-form-message" class="form-message"></div>
             </form>
         </div>
@@ -1029,59 +1058,30 @@
 
 <div class="rounded-wrap">
     <div class="rounded-card">
-        <h2>Why choose <span style="color:var(--pink)">Nikah Forever</span>...?</h2>
+        <h2 data-lang-key="why_choose_us">Why choose <span style="color:var(--pink)">Nikah Forever</span>...?</h2>
         <div class="features">
             <div class="feature">
                 <div class="icon-tile" aria-hidden="true">
-                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="url(#g1)"/>
-                        <path d="M4 20c0-3.313 2.687-6 6-6h4c3.313 0 6 2.687 6 6v1H4v-1z" fill="url(#g2)"/>
-                        <defs>
-                            <linearGradient id="g1" x1="0" x2="1">
-                                <stop offset="0" stop-color="#ff93be"/>
-                                <stop offset="1" stop-color="#e91e63"/>
-                            </linearGradient>
-                            <linearGradient id="g2" x1="0" x2="1">
-                                <stop offset="0" stop-color="#ffdce6"/>
-                                <stop offset="1" stop-color="#ffd6e6"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="url(#g1)"/><path d="M4 20c0-3.313 2.687-6 6-6h4c3.313 0 6 2.687 6 6v1H4v-1z" fill="url(#g2)"/><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ff93be"/><stop offset="1" stop-color="#e91e63"/></linearGradient><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#ffdce6"/><stop offset="1" stop-color="#ffd6e6"/></linearGradient></defs></svg>
                 </div>
-                <h3>1 Million + Active Users</h3>
-                <p>Large and active user base so you get more genuine matches quickly.</p>
+                <h3 data-lang-key="feature_users_title">1 Million + Active Users</h3>
+                <p data-lang-key="feature_users_desc">Large and active user base so you get more genuine matches quickly.</p>
             </div>
             <div class="feature">
                 <div class="icon-tile" aria-hidden="true">
-                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.1 21s-8.1-4.8-8.1-10.1C4 6.6 7.3 4 11 7c0 0 1.2-1.9 3.2-1.9 1.9 0 3.8 1.6 4 3.6.6 4.1-3.1 11.4-6.1 12.3z" fill="url(#g3)"/>
-                        <defs>
-                            <linearGradient id="g3" x1="0" x2="1">
-                                <stop offset="0" stop-color="#ff9fbf"/>
-                                <stop offset="1" stop-color="#e91e63"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.1 21s-8.1-4.8-8.1-10.1C4 6.6 7.3 4 11 7c0 0 1.2-1.9 3.2-1.9 1.9 0 3.8 1.6 4 3.6.6 4.1-3.1 11.4-6.1 12.3z" fill="url(#g3)"/><defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#ff9fbf"/><stop offset="1" stop-color="#e91e63"/></linearGradient></defs></svg>
                 </div>
-                <h3>55,000 + Successful Stories</h3>
-                <p>Thousands of verified success stories from happy couples.</p>
+                <h3 data-lang-key="feature_stories_title">55,000 + Successful Stories</h3>
+                <p data-lang-key="feature_stories_desc">Thousands of verified success stories from happy couples.</p>
             </div>
             <div class="feature">
                 <div class="icon-tile" aria-hidden="true">
-                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2l1.79 3.63L17.8 6l-2.9 2.54L15.6 12 12 10.2 8.4 12l.7-3.46L6.2 6l3.99-.37L12 2z" fill="url(#g4)"/>
-                        <defs>
-                            <linearGradient id="g4" x1="0" x2="1">
-                                <stop offset="0" stop-color="#ffd6e6"/>
-                                <stop offset="1" stop-color="#ff6f9a"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l1.79 3.63L17.8 6l-2.9 2.54L15.6 12 12 10.2 8.4 12l.7-3.46L6.2 6l3.99-.37L12 2z" fill="url(#g4)"/><defs><linearGradient id="g4" x1="0" x2="1"><stop offset="0" stop-color="#ffd6e6"/><stop offset="1" stop-color="#ff6f9a"/></linearGradient></defs></svg>
                 </div>
-                <h3>100% Verified Profiles</h3>
-                <p>All profiles verified to ensure authenticity and safety.</p>
+                <h3 data-lang-key="feature_verified_title">100% Verified Profiles</h3>
+                <p data-lang-key="feature_verified_desc">All profiles verified to ensure authenticity and safety.</p>
             </div>
-        </div> </div> <div class="below-section">We've been featured in</div>
+        </div> </div> <div class="below-section" data-lang-key="featured_in">We've been featured in</div>
 </div>
 
 <section class="features-section" id="verified-profiles-section">
@@ -1090,30 +1090,15 @@
         <div class="info-overlay">
             <div>
                 <h3>Arish Azmi</h3>
-                <svg class="verified-badge" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.5 5.5l-10 10-5-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" fill="#e91e63" stroke="#e91e63" stroke-width="2"/>
-                    <path d="M16 8l-6 6-3-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                </svg>
+                <svg class="verified-badge" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 5.5l-10 10-5-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" fill="#e91e63" stroke="#e91e63" stroke-width="2"/><path d="M16 8l-6 6-3-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
                 <p>New Delhi, India</p>
             </div>
         </div>
     </div>
     <div class="content">
-        <div class="icon-circle">
-            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" fill="url(#grad1)"/>
-                <path d="M16 8l-6 6-3-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <defs>
-                    <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#ff6f9a" />
-                        <stop offset="100%" stop-color="#e91e63" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <h2>Meet with <span style="color:var(--pink)">verified</span> people</h2>
-        <p>Connect confidently with matches who have been verified for authenticity.</p>
+        <div class="icon-circle"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" fill="url(#grad1)"/><path d="M16 8l-6 6-3-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff6f9a" /><stop offset="100%" stop-color="#e91e63" /></linearGradient></defs></svg></div>
+        <h2 data-lang-key="meet_verified_people">Meet with <span style="color:var(--pink)">verified</span> people</h2>
+        <p data-lang-key="meet_verified_people_desc">Connect confidently with matches who have been verified for authenticity.</p>
     </div>
 </section>
 
@@ -1121,24 +1106,13 @@
     <div class="profile-card">
         <img src="image/Image56789.png.jpeg" alt="Premium Search">
         <div class="info-overlay" style="background: none; backdrop-filter: none; justify-content: flex-start;">
-            <p style="font-size: 12px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Image is for representation only</p>
+            <p style="font-size: 12px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);" data-lang-key="rep_image">Image is for representation only</p>
         </div>
     </div>
     <div class="content">
-        <div class="icon-circle">
-            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" fill="url(#grad2)"/>
-                <path d="M15.5 15.5l5.5 5.5" stroke="url(#grad2)" stroke-width="2" stroke-linecap="round"/>
-                <defs>
-                    <linearGradient id="grad2" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#ff6f9a" />
-                        <stop offset="100%" stop-color="#e91e63" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <h2>Find perfect matches with <span style="color:var(--pink)">Premium Search</span></h2>
-        <p>Use advanced filters and algorithms to discover your ideal match faster with Premium Search.</p>
+        <div class="icon-circle"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" fill="url(#grad2)"/><path d="M15.5 15.5l5.5 5.5" stroke="url(#grad2)" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="grad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff6f9a" /><stop offset="100%" stop-color="#e91e63" /></linearGradient></defs></svg></div>
+        <h2 data-lang-key="premium_search">Find perfect matches with <span style="color:var(--pink)">Premium Search</span></h2>
+        <p data-lang-key="premium_search_desc">Use advanced filters and algorithms to discover your ideal match faster with Premium Search.</p>
     </div>
 </section>
 
@@ -1147,19 +1121,9 @@
         <img src="image/a-modern-and-elegant-smartphone-mockup-s_OL0ZBk54Q0uk2CVCoK66bA__92EklUMQ8mnH95rwnCMrA.jpeg" alt="Chat Interface">
     </div>
     <div class="content">
-        <div class="icon-circle">
-            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 15.25c0 1.24-1.01 2.25-2.25 2.25H6.5L3 21V6.25C3 5.01 4.01 4 5.25 4h13.5C19.99 4 21 5.01 21 6.25v9z" fill="url(#grad3)" />
-                <defs>
-                    <linearGradient id="grad3" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#ff6f9a" />
-                        <stop offset="100%" stop-color="#e91e63" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <h2>Get to know each other through <span style="color:var(--pink)">Chat</span></h2>
-        <p>Our secure in-app chat lets you communicate safely and privately.</p>
+        <div class="icon-circle"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15.25c0 1.24-1.01 2.25-2.25 2.25H6.5L3 21V6.25C3 5.01 4.01 4 5.25 4h13.5C19.99 4 21 5.01 21 6.25v9z" fill="url(#grad3)" /><defs><linearGradient id="grad3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff6f9a" /><stop offset="100%" stop-color="#e91e63" /></linearGradient></defs></svg></div>
+        <h2 data-lang-key="chat_feature">Get to know each other through <span style="color:var(--pink)">Chat</span></h2>
+        <p data-lang-key="chat_feature_desc">Our secure in-app chat lets you communicate safely and privately.</p>
     </div>
 </section>
 
@@ -1168,54 +1132,38 @@
         <img src="image/ideogram-v3.0_A_wide_cinematic_banner_for_a_matrimonial_website_showcasing_a_beautiful_Indian_wedding_couple_in_t-0.jpg" alt="Blurred Photos">
     </div>
     <div class="content">
-        <div class="icon-circle">
-            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9 16c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm3 0c-.55 0-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1zm3 0c-.55 0-1-.45-1-1v-8c0-.55.45-1 1-1s1 .45 1 1v8c0 .55-.45 1-1 1z" fill="url(#grad4)" />
-                <defs>
-                    <linearGradient id="grad4" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#ff6f9a" />
-                        <stop offset="100%" stop-color="#e91e63" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <h2>Blur your photos for <span style="color:var(--pink)">privacy</span></h2>
-        <p>Control who sees your photos and when, with our privacy features.</p>
+        <div class="icon-circle"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9 16c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm3 0c-.55 0-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1zm3 0c-.55 0-1-.45-1-1v-8c0-.55.45-1 1-1s1 .45 1 1v8c0 .55-.45 1-1 1z" fill="url(#grad4)" /><defs><linearGradient id="grad4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff6f9a" /><stop offset="100%" stop-color="#e91e63" /></linearGradient></defs></svg></div>
+        <h2 data-lang-key="blur_photos">Blur your photos for <span style="color:var(--pink)">privacy</span></h2>
+        <p data-lang-key="blur_photos_desc">Control who sees your photos and when, with our privacy features.</p>
     </div>
 </section>
 
 <section class="testimonials-section" id="testimonials-section">
-    <h2><span class="highlight">Thousands</span> of happy couples matched by us</h2>
+    <h2><span class="highlight" data-lang-key="thousands">Thousands</span> <span data-lang-key="happy_couples">of happy couples matched by us</span></h2>
     <div class="testimonial-carousel">
         <div class="testimonial-card">
             <div class="text-content">
                 <h3>Zain & Sana</h3>
-                <p>"Finding a compatible partner was effortless with Nikah Forever. Their service is truly exceptional! I was able to connect with someone who shares my values, faith, and life goals. The process was easy, and the platform's interface is so simple and intuitive to use."</p>
-                <p>Highly recommended for anyone looking for a genuine matrimonial platform."</p>
+                <p data-lang-key="testimonial1_text1">"Finding a compatible partner was effortless with Nikah Forever. Their service is truly exceptional! I was able to connect with someone who shares my values, faith, and life goals. The process was easy, and the platform's interface is so simple and intuitive to use."</p>
+                <p data-lang-key="testimonial1_text2">Highly recommended for anyone looking for a genuine matrimonial platform."</p>
             </div>
-            <div class="couple-image">
-                <img src="image/ideogram-v3.0_A_wide_cinematic_banner_for_a_matrimonial_website_featuring_a_happy_wedding_couple_in_elegant_tradi-0.jpg" alt="Zain & Sana">
-            </div>
+            <div class="couple-image"><img src="image/ideogram-v3.0_A_wide_cinematic_banner_for_a_matrimonial_website_featuring_a_happy_wedding_couple_in_elegant_tradi-0.jpg" alt="Zain & Sana"></div>
         </div>
         <div class="testimonial-card">
             <div class="text-content">
                 <h3>Ahmed & Fatima</h3>
-                <p>"We never thought finding each other would be so easy. Thanks to Nikah Forever for connecting us! The platform allowed us to connect over shared values and interests, which is so important for a successful marriage. The whole experience was smooth and seamless from the first step."</p>
-                <p>Our families are overjoyed and so are we!"</p>
+                <p data-lang-key="testimonial2_text1">"We never thought finding each other would be so easy. Thanks to Nikah Forever for connecting us! The platform allowed us to connect over shared values and interests, which is so important for a successful marriage. The whole experience was smooth and seamless from the first step."</p>
+                <p data-lang-key="testimonial2_text2">Our families are overjoyed and so are we!"</p>
             </div>
-            <div class="couple-image">
-                <img src="image/ideogram-v3.0_A_wide_cinematic_banner_for_a_matrimonial_website_showing_a_happy_wedding_couple_in_elegant_traditi-0.jpg" alt="Ahmed & Fatima">
-            </div>
+            <div class="couple-image"><img src="image/ideogram-v3.0_A_wide_cinematic_banner_for_a_matrimonial_website_showing_a_happy_wedding_couple_in_elegant_traditi-0.jpg" alt="Ahmed & Fatima"></div>
         </div>
         <div class="testimonial-card">
             <div class="text-content">
                 <h3>Adeel & Zara</h3>
-                <p>"Nikah Forever made my search for a life partner truly special. The personalized match suggestions were spot on, and the secure communication features gave me peace of mind. It was a successful journey from browsing profiles to finding my soulmate."</p>
-                <p>Our families are overjoyed and so are we!</p>
+                <p data-lang-key="testimonial3_text1">"Nikah Forever made my search for a life partner truly special. The personalized match suggestions were spot on, and the secure communication features gave me peace of mind. It was a successful journey from browsing profiles to finding my soulmate."</p>
+                <p data-lang-key="testimonial3_text2">Our families are overjoyed and so are we!</p>
             </div>
-            <div class="couple-image">
-                <img src="image/unnamed.png" alt="Adeel & Zara">
-            </div>
+            <div class="couple-image"><img src="image/unnamed.png" alt="Adeel & Zara"></div>
         </div>
     </div>
     <div class="carousel-dots">
@@ -1226,48 +1174,48 @@
 </section>
 
 <section class="browse-profiles-section">
-    <h2>Browse profiles by</h2>
+    <h2 data-lang-key="browse_by">Browse profiles by</h2>
     <div class="browse-options">
-        <div class="option-item active" data-option="marital">Marital Status</div>
-        <div class="option-item" data-option="caste">Caste</div>
-        <div class="option-item" data-option="sect">Sect</div>
-        <div class="option-item" data-option="state">State</div>
-        <div class="option-item" data-option="city">City</div>
+        <div class="option-item active" data-option="marital" data-lang-key="browse_marital">Marital Status</div>
+        <div class="option-item" data-option="caste" data-lang-key="browse_caste">Caste</div>
+        <div class="option-item" data-option="sect" data-lang-key="browse_sect">Sect</div>
+        <div class="option-item" data-option="state" data-lang-key="browse_state">State</div>
+        <div class="option-item" data-option="city" data-lang-key="browse_city">City</div>
     </div>
     <div class="browse-sub-options">
-        <div class="sub-option-item">Never Married</div>
-        <div class="sub-option-item">Divorced</div>
-        <div class="sub-option-item">Separated</div>
-        <div class="sub-option-item">Widowed</div>
+        <div class="sub-option-item" data-lang-key="sub_never_married">Never Married</div>
+        <div class="sub-option-item" data-lang-key="sub_divorced">Divorced</div>
+        <div class="sub-option-item" data-lang-key="sub_separated">Separated</div>
+        <div class="sub-option-item" data-lang-key="sub_widowed">Widowed</div>
     </div>
 </section>
 
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-column">
-            <h4>ABOUT Salmani Nikah Bureau</h4>
-            <p>At Salmani Nikah Bureau, we are committed to helping you find the one you are destined to spend the rest of your life with. Our goal is to make Muslim matrimony a simple, secure, and successful journey for you.</p>
+            <h4 data-lang-key="footer_about_title">ABOUT Salmani Nikah Bureau</h4>
+            <p data-lang-key="footer_about_desc">At Salmani Nikah Bureau, we are committed to helping you find the one you are destined to spend the rest of your life with. Our goal is to make Muslim matrimony a simple, secure, and successful journey for you.</p>
         </div>
         <div class="footer-column">
-            <h4>COMPANY</h4>
-            <a href="#">About Us</a>
-            <a href="#">Career</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Child Safety</a>
+            <h4 data-lang-key="footer_company">COMPANY</h4>
+            <a href="#" data-lang-key="footer_about_us">About Us</a>
+            <a href="#" data-lang-key="footer_career">Career</a>
+            <a href="#" data-lang-key="footer_contact">Contact Us</a>
+            <a href="#" data-lang-key="footer_safety">Child Safety</a>
         </div>
         <div class="footer-column">
-            <h4>HELP</h4>
-            <a href="#">FAQs</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Privacy Policy</a>
+            <h4 data-lang-key="footer_help">HELP</h4>
+            <a href="#" data-lang-key="footer_faqs">FAQs</a>
+            <a href="#" data-lang-key="footer_terms">Terms & Conditions</a>
+            <a href="#" data-lang-key="footer_privacy">Privacy Policy</a>
         </div>
         <div class="footer-column">
-            <h4>FOLLOW US</h4>
+            <h4 data-lang-key="footer_follow">FOLLOW US</h4>
             <div class="social-icons">
                 <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 8.1c-.2-.7-.7-1.3-1.4-1.5-1.2-.5-6-.5-9.1-.5s-7.9-.1-9.1.5c-.7.2-1.2.8-1.4 1.5-.5 2.1-.5 6.3-.5 6.9 0 .6 0 4.8.5 6.9.2.7.7 1.3 1.4 1.5 1.2.5 6 .5 9.1.5s7.9.1 9.1-.5c.7-.2 1.2-.8 1.4-1.5.5-2.1.5-6.3.5-6.9 0-.6 0-4.8-.5-6.9zM9.5 15.5V8.5L16 12l-6.5 3.5z"/></svg></a>
                 <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 5.8c.6 0 1.1.5 1.1 1.1s-.5 1.1-1.1 1.1-1.1-.5-1.1-1.1.5-1.1 1.1-1.1zM12 6.8c-2.4 0-4.4 2-4.4 4.4s2 4.4 4.4 4.4 4.4-2 4.4-4.4-2-4.4-4.4-4.4zm0 6.6c-1.2 0-2.2-.9-2.2-2.2s.9-2.2 2.2-2.2 2.2.9 2.2 2.2-.9 2.2-2.2 2.2z"/></svg></a>
                 <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.64 4.31a.5.5 0 00-.7-.14l-2.7 1.2-.9-1.9c-.1-.2-.4-.3-.7-.2l-2 1.2a.5.5 0 00-.3.6v.1l-1.6 1.1c-.2.1-.4.2-.5.5-.1.3-.1.6.1.9l.4.7c.3.5.8 1 1.5 1.2s1.4.1 2-.2l.7-.4c.3-.2.5-.3.8-.4l1.3-.3c.4-.1.7-.2 1-.4l.6-.4a.5.5 0 00.3-.6l-.4-.7a.5.5 0 00-.7-.3l-1.3.3c-.2.1-.4.2-.6.3-.1.1-.2.2-.3.3l-.6.4c-.1.1-.2.2-.3.3-.3.1-.6.2-.8.2-.3 0-.5 0-.7-.1-.2-.1-.4-.2-.5-.4-.1-.2-.1-.4 0-.6l.1-.2c.1-.2.2-.4.4-.5l.4-.2c.3-.1.6-.2.9-.3l1.1-.3.8-.3c.2-.1.4-.2.6-.4.2-.2.4-.4.5-.6.1-.2.1-.4 0-.6l-1.2-2.7a.5.5 0 00-.1-.7zM12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm-1.8-6.6l-2.4-2.8a.5.5 0 010-.7l.9-.8a.5.5 0 01.7 0l1.7 1.9 2.9-3.2a.5.5 0 01.7 0l.9.8a.5.5 0 010 .7l-3.6 4a.5.5 0 01-.7 0z"/></svg></a>
-                <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.8 3.5a.7.7 0 00-.7-.7h-1.6c-1.3 0-2.4 1-2.4 2.4V8c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2a.7.7 0 00-.7-.7H9.2c-1.3 0-2.4 1-2.4 2.4V10c0 .4-.2.7-.5.7H6c-.4 0-.7-.3-.7-.7V7.5a.7.7 0 00-.7-.7H3.5a.7.7 0 00-.7.7V10c0 .4-.2.7-.5.7H2c-.4 0-.7-.3-.7-.7v-3.3c0-1.3-1-2.4-2.4-2.4h-1.6a.7.7 0 00-.7.7v1.6c0 1.3 1 2.4 2.4 2.4H3c.4 0 .7-.3.7-.7V8c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4h1.6c1.3 0 2.4-1 2.4-2.4V11c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4H19.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6c-1.3 0-2.4 1-2.4 2.4v2.4c0 .4.2.7.5.7h.3c.4 0 .7-.3.7-.7v-2.4c0-1.3 1-2.4 2.4-2.4h1.6a.7.7 0 00.7.7zM18.8 3.5v1.6c0 1.3 1 2.4 2.4 2.4h1.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6zM15.4 7c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2c0-1.3 1-2.4 2.4-2.4h1.6c.4 0 .7.3.7.7v1.6c0 1.3-1 2.4-2.4 2.4H15.4z"/></svg></a>
+                <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.8 3.5a.7.7 0 00-.7-.7h-1.6c-1.3 0-2.4 1-2.4 2.4V8c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2a.7.7 0 00-.7-.7H9.2c-1.3 0-2.4 1-2.4 2.4V10c0 .4-.2.7-.5.7H6c-.4 0-.7-.3-.7-.7V7.5a.7.7 0 00-.7-.7H3.5a.7.7 0 00-.7.7V10c0 .4-.2.7-.5.7H2c-.4 0-.7-.3-.7-.7v-3.3c0-1.3-1-2.4-2.4-2.4h-1.6a.7.7 0 00-.7.7v1.6c0 1.3 1 2.4 2.4 2.4H3c.4 0 .7-.3.7-.7V8c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4h1.6c1.3 0 2.4-1 2.4-2.4V11c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4H19.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6c-1.3 0-2.4 1-2.4 2.4v2.4c0 .4.2.7.5.7h.3c.4 0 .7-.3.7-.7v-2.4c0-1.3 1-2.4 2.4-2.4h1.6a.7.7 0 00.7.7zM18.8 3.5v1.6c0 1.3 1 2.4 2.4 2.4h1.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6zM15.4 7c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2c0-1.3 1-2.4 2.4-2.4h1.6c.4 0 .7.3.7.7v1.6c0 1.3-1 2.4-2.4-2.4H15.4z"/></svg></a>
             </div>
         </div>
     </div>
@@ -1276,27 +1224,27 @@
 <div class="modal-overlay" id="login-modal-overlay">
     <div class="modal-content">
         <button class="close-btn" id="close-modal-btn">&times;</button>
-        <h2>Login to your account</h2>
+        <h2 data-lang-key="login_title">Login to your account</h2>
         <form action="#">
             <div class="form-group">
-                <label for="email">Email address</label>
+                <label for="email" data-lang-key="login_email">Email address</label>
                 <input type="email" id="email" required>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password" data-lang-key="login_password">Password</label>
                 <input type="password" id="password" required>
             </div>
             <div class="form-options">
                 <div class="remember-me">
                     <input type="checkbox" id="remember">
-                    <label for="remember">Remember me</label>
+                    <label for="remember" data-lang-key="login_remember">Remember me</label>
                 </div>
-                <a href="#" class="forgot-password">Forgot Password</a>
+                <a href="#" class="forgot-password" data-lang-key="login_forgot">Forgot Password</a>
             </div>
-            <button type="submit" class="login-submit-btn">Login</button>
+            <button type="submit" class="login-submit-btn" data-lang-key="login_button">Login</button>
         </form>
         <p class="register-link">
-            New at Nikah Forever? <a href="#">Register Now</a>
+            <span data-lang-key="login_new_user">New at Nikah Forever?</span> <a href="#" data-lang-key="login_register_now">Register Now</a>
         </p>
     </div>
 </div>
@@ -1532,6 +1480,221 @@
         if (event.target === loginModalOverlay) {
             hideModal();
         }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const languageSelector = document.getElementById('language-selector');
+
+        const translations = {
+            'en': {
+                'nav_about': 'About Us',
+                'nav_browse': 'Browse profiles by ▾',
+                'nav_login': 'Login',
+                'hero_title': "India's No.1 Muslim Matrimony",
+                'register_title': 'Register and find your soulmate',
+                'register_title_mobile': 'Register and find your soulmate',
+                'reg_create_profile_for': 'Create Profile for',
+                'reg_self': 'Self',
+                'reg_son': 'Son',
+                'reg_daughter': 'Daughter',
+                'reg_friend': 'Friend',
+                'reg_relative': 'Relative',
+                'reg_sibling': 'Sibling',
+                'reg_select_gender': 'Select Gender',
+                'reg_male': 'Male',
+                'reg_female': 'Female',
+                'reg_email_placeholder': 'Email address',
+                'reg_phone_placeholder': 'Phone number',
+                'reg_password_placeholder': 'Create Password',
+                'reg_button': 'Register for free',
+                'reg_create_profile_for_mobile': 'Create Profile for',
+                'reg_self_mobile': 'Self',
+                'reg_son_mobile': 'Son',
+                'reg_daughter_mobile': 'Daughter',
+                'reg_friend_mobile': 'Friend',
+                'reg_relative_mobile': 'Relative',
+                'reg_sibling_mobile': 'Sibling',
+                'reg_select_gender_mobile': 'Select Gender',
+                'reg_male_mobile': 'Male',
+                'reg_female_mobile': 'Female',
+                'reg_email_placeholder_mobile': 'Email address',
+                'reg_phone_placeholder_mobile': 'Phone number',
+                'reg_password_placeholder_mobile': 'Create Password',
+                'reg_button_mobile': 'Register for free',
+                'why_choose_us': 'Why choose Nikah Forever...?',
+                'feature_users_title': '1 Million + Active Users',
+                'feature_users_desc': 'Large and active user base so you get more genuine matches quickly.',
+                'feature_stories_title': '55,000 + Successful Stories',
+                'feature_stories_desc': 'Thousands of verified success stories from happy couples.',
+                'feature_verified_title': '100% Verified Profiles',
+                'feature_verified_desc': 'All profiles verified to ensure authenticity and safety.',
+                'featured_in': "We've been featured in",
+                'meet_verified_people': 'Meet with verified people',
+                'meet_verified_people_desc': 'Connect confidently with matches who have been verified for authenticity.',
+                'rep_image': 'Image is for representation only',
+                'premium_search': 'Find perfect matches with Premium Search',
+                'premium_search_desc': 'Use advanced filters and algorithms to discover your ideal match faster with Premium Search.',
+                'chat_feature': 'Get to know each other through Chat',
+                'chat_feature_desc': 'Our secure in-app chat lets you communicate safely and privately.',
+                'blur_photos': 'Blur your photos for privacy',
+                'blur_photos_desc': 'Control who sees your photos and when, with our privacy features.',
+                'thousands': 'Thousands',
+                'happy_couples': 'of happy couples matched by us',
+                'testimonial1_text1': `"Finding a compatible partner was effortless with Nikah Forever. Their service is truly exceptional! I was able to connect with someone who shares my values, faith, and life goals. The process was easy, and the platform's interface is so simple and intuitive to use."`,
+                'testimonial1_text2': 'Highly recommended for anyone looking for a genuine matrimonial platform."',
+                'testimonial2_text1': `"We never thought finding each other would be so easy. Thanks to Nikah Forever for connecting us! The platform allowed us to connect over shared values and interests, which is so important for a successful marriage. The whole experience was smooth and seamless from the first step."`,
+                'testimonial2_text2': 'Our families are overjoyed and so are we!"',
+                'testimonial3_text1': `"Nikah Forever made my search for a life partner truly special. The personalized match suggestions were spot on, and the secure communication features gave me peace of mind. It was a successful journey from browsing profiles to finding my soulmate."`,
+                'testimonial3_text2': 'Our families are overjoyed and so are we!',
+                'browse_by': 'Browse profiles by',
+                'browse_marital': 'Marital Status',
+                'browse_caste': 'Caste',
+                'browse_sect': 'Sect',
+                'browse_state': 'State',
+                'browse_city': 'City',
+                'sub_never_married': 'Never Married',
+                'sub_divorced': 'Divorced',
+                'sub_separated': 'Separated',
+                'sub_widowed': 'Widowed',
+                'footer_about_title': 'ABOUT Salmani Nikah Bureau',
+                'footer_about_desc': 'At Salmani Nikah Bureau, we are committed to helping you find the one you are destined to spend the rest of your life with. Our goal is to make Muslim matrimony a simple, secure, and successful journey for you.',
+                'footer_company': 'COMPANY',
+                'footer_about_us': 'About Us',
+                'footer_career': 'Career',
+                'footer_contact': 'Contact Us',
+                'footer_safety': 'Child Safety',
+                'footer_help': 'HELP',
+                'footer_faqs': 'FAQs',
+                'footer_terms': 'Terms & Conditions',
+                'footer_privacy': 'Privacy Policy',
+                'footer_follow': 'FOLLOW US',
+                'login_title': 'Login to your account',
+                'login_email': 'Email address',
+                'login_password': 'Password',
+                'login_remember': 'Remember me',
+                'login_forgot': 'Forgot Password',
+                'login_button': 'Login',
+                'login_new_user': 'New at Nikah Forever?',
+                'login_register_now': 'Register Now'
+            },
+            'hi': {
+                'nav_about': 'हमारे बारे में',
+                'nav_browse': 'प्रोफ़ाइल ब्राउज़ करें ▾',
+                'nav_login': 'लॉग इन करें',
+                'hero_title': 'भारत की नंबर 1 मुस्लिम मैट्रिमोनी',
+                'register_title': 'रजिस्टर करें और अपना जीवनसाथी पाएं',
+                'register_title_mobile': 'रजिस्टर करें और अपना जीवनसाथी पाएं',
+                'reg_create_profile_for': 'प्रोफ़ाइल बनाएं',
+                'reg_self': 'स्वयं',
+                'reg_son': 'बेटा',
+                'reg_daughter': 'बेटी',
+                'reg_friend': 'मित्र',
+                'reg_relative': 'रिश्तेदार',
+                'reg_sibling': 'भाई/बहन',
+                'reg_select_gender': 'लिंग चुनें',
+                'reg_male': 'पुरुष',
+                'reg_female': 'महिला',
+                'reg_email_placeholder': 'ईमेल पता',
+                'reg_phone_placeholder': 'फ़ोन नंबर',
+                'reg_password_placeholder': 'पासवर्ड बनाएं',
+                'reg_button': 'मुफ्त में पंजीकरण करें',
+                'reg_create_profile_for_mobile': 'प्रोफ़ाइल बनाएं',
+                'reg_self_mobile': 'स्वयं',
+                'reg_son_mobile': 'बेटा',
+                'reg_daughter_mobile': 'बेटी',
+                'reg_friend_mobile': 'मित्र',
+                'reg_relative_mobile': 'रिश्तेदार',
+                'reg_sibling_mobile': 'भाई/बहन',
+                'reg_select_gender_mobile': 'लिंग चुनें',
+                'reg_male_mobile': 'पुरुष',
+                'reg_female_mobile': 'महिला',
+                'reg_email_placeholder_mobile': 'ईमेल पता',
+                'reg_phone_placeholder_mobile': 'फ़ोन नंबर',
+                'reg_password_placeholder_mobile': 'पासवर्ड बनाएं',
+                'reg_button_mobile': 'मुफ्त में पंजीकरण करें',
+                'why_choose_us': 'निकाह फॉरएवर क्यों चुनें...?',
+                'feature_users_title': '10 लाख + सक्रिय उपयोगकर्ता',
+                'feature_users_desc': 'बड़ा और सक्रिय उपयोगकर्ता आधार ताकि आपको जल्दी से अधिक वास्तविक मैच मिलें।',
+                'feature_stories_title': '55,000 + सफल कहानियाँ',
+                'feature_stories_desc': 'खुशहाल जोड़ों की हजारों सत्यापित सफलता की कहानियाँ।',
+                'feature_verified_title': '100% सत्यापित प्रोफ़ाइल',
+                'feature_verified_desc': 'प्रामाणिकता और सुरक्षा सुनिश्चित करने के लिए सभी प्रोफ़ाइल सत्यापित हैं।',
+                'featured_in': 'हमें इनमें चित्रित किया गया है',
+                'meet_verified_people': 'सत्यापित लोगों से मिलें',
+                'meet_verified_people_desc': 'उन मैचों से आत्मविश्वास से जुड़ें जिन्हें प्रामाणिकता के लिए सत्यापित किया गया है।',
+                'rep_image': 'छवि केवल प्रतिनिधित्व के लिए है',
+                'premium_search': 'प्रीमियम खोज के साथ सही मिलान खोजें',
+                'premium_search_desc': 'प्रीमियम खोज के साथ अपने आदर्श मैच को तेजी से खोजने के लिए उन्नत फ़िल्टर और एल्गोरिदम का उपयोग करें।',
+                'chat_feature': 'चैट के माध्यम से एक-दूसरे को जानें',
+                'chat_feature_desc': 'हमारी सुरक्षित इन-ऐप चैट आपको सुरक्षित और निजी रूप से संवाद करने देती है।',
+                'blur_photos': 'गोपनीयता के लिए अपनी तस्वीरें धुंधली करें',
+                'blur_photos_desc': 'हमारी गोपनीयता सुविधाओं के साथ नियंत्रित करें कि आपकी तस्वीरें कौन और कब देखता है।',
+                'thousands': 'हजारों',
+                'happy_couples': 'खुशहाल जोड़े हमारे द्वारा मिलाए गए',
+                'testimonial1_text1': `"निकाह फॉरएवर के साथ एक संगत साथी ढूंढना आसान था। उनकी सेवा वास्तव में असाधारण है! मैं किसी ऐसे व्यक्ति से जुड़ सका जो मेरे मूल्यों, विश्वास और जीवन के लक्ष्यों को साझा करता है। प्रक्रिया आसान थी, और प्लेटफ़ॉर्म का इंटरफ़ेस उपयोग करने में बहुत सरल और सहज है।"`,
+                'testimonial1_text2': 'वास्तविक वैवाहिक मंच की तलाश करने वाले किसी भी व्यक्ति के लिए अत्यधिक अनुशंसित।"',
+                'testimonial2_text1': `"हमने कभी नहीं सोचा था कि एक-दूसरे को ढूंढना इतना आसान होगा। हमें जोड़ने के लिए निकाह फॉरएवर का धन्यवाद! प्लेटफ़ॉर्म ने हमें साझा मूल्यों और रुचियों पर जुड़ने की अनुमति दी, जो एक सफल विवाह के लिए बहुत महत्वपूर्ण है। पूरा अनुभव पहले कदम से ही सहज और निर्बाध था।"`,
+                'testimonial2_text2': 'हमारे परिवार बहुत खुश हैं और हम भी!"',
+                'testimonial3_text1': `"निकाह फॉरएver ने मेरे जीवन साथी की तलाश को वास्तव में विशेष बना दिया। व्यक्तिगत मैच सुझाव सटीक थे, और सुरक्षित संचार सुविधाओं ने मुझे मानसिक शांति दी। यह प्रोफ़ाइल ब्राउज़ करने से लेकर मेरे जीवनसाथी को खोजने तक की एक सफल यात्रा थी।"`,
+                'testimonial3_text2': 'हमारे परिवार बहुत खुश हैं और हम भी!',
+                'browse_by': 'प्रोफ़ाइल ब्राउज़ करें',
+                'browse_marital': 'वैवाहिक स्थिति',
+                'browse_caste': 'जाति',
+                'browse_sect': 'पंथ',
+                'browse_state': 'राज्य',
+                'browse_city': 'शहर',
+                'sub_never_married': 'कभी शादी नहीं हुई',
+                'sub_divorced': 'तलाकशुदा',
+                'sub_separated': 'अलग',
+                'sub_widowed': 'विधवा',
+                'footer_about_title': 'सलमानी निकाह ब्यूरो के बारे में',
+                'footer_about_desc': 'सलमानी निकाह ब्यूरो में, हम आपको वह व्यक्ति खोजने में मदद करने के लिए प्रतिबद्ध हैं जिसके साथ आप अपना शेष जीवन बिताने के लिए किस्मत में हैं। हमारा लक्ष्य मुस्लिम विवाह को आपके लिए एक सरल, सुरक्षित और सफल यात्रा बनाना है।',
+                'footer_company': 'कंपनी',
+                'footer_about_us': 'हमारे बारे में',
+                'footer_career': 'करियर',
+                'footer_contact': 'हमसे संपर्क करें',
+                'footer_safety': 'बाल सुरक्षा',
+                'footer_help': 'सहायता',
+                'footer_faqs': 'अक्सर पूछे जाने वाले प्रश्न',
+                'footer_terms': 'नियम और शर्तें',
+                'footer_privacy': 'गोपनीयता नीति',
+                'footer_follow': 'हमें फॉलो करें',
+                'login_title': 'अपने खाते में प्रवेश करें',
+                'login_email': 'ईमेल पता',
+                'login_password': 'पासवर्ड',
+                'login_remember': 'मुझे याद रखना',
+                'login_forgot': 'पासवर्ड भूल गए',
+                'login_button': 'लॉग इन करें',
+                'login_new_user': 'निकाह फॉरएवर में नए हैं?',
+                'login_register_now': 'अभी पंजीकरण करें'
+            }
+        };
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.placeholder) {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+            document.documentElement.lang = lang; // Update the lang attribute of the <html> tag
+            localStorage.setItem('language', lang); // Save preference
+            languageSelector.value = lang;
+        };
+
+        languageSelector.addEventListener('change', (event) => {
+            setLanguage(event.target.value);
+        });
+
+        // Check for saved language in localStorage on page load
+        const savedLang = localStorage.getItem('language') || 'en'; // Default to English
+        setLanguage(savedLang);
     });
 </script>
 

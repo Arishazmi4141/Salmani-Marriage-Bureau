@@ -13,16 +13,14 @@
             --dark: #333;
         }
 
+        *{box-sizing: border-box; margin: 0; padding: 0;}
         body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #333;
-            position: relative;
+            font-family: "Poppins", sans-serif;
+            color: var(--dark);
+            background: #fafafa;
             overflow-x: hidden;
+            transition: filter 0.5s ease-in-out;
         }
-
         /* Background curve */
         body::before {
             content: '';
@@ -39,38 +37,36 @@
 
         /* NAVBAR */
         .navbar {
-            width: 95%;
-            position: fixed;
+            width: 100%;
+            height: 90px;
+            position: fixed; /* Changed to fixed for better mobile experience */
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 40px;
+            padding: 20px 40px;
             background: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             animation: fadeIn 1s ease-in-out;
-            transition: all 0.3s ease;
         }
-        .navbar .logo {
+           .navbar .logo{ height: 100px; }
+        .navbar .logo{ width: 100px; }
+        /* .navbar .logo {
             height: 75px;
             border-radius: 35%;
-        }
-        .nav-links {
-            display: flex;
+        } */
+   .nav-links {
+            display: flex; /* Added display flex */
             align-items: center;
-            list-style: none;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-            transition: all 0.3s ease;
+            list-style: none; /* Removed bullet points for list items */
         }
-        .nav-links li a {
+      .nav-links li a {
             color: var(--dark);
             text-decoration: none;
             font-weight: 600;
+            margin-left: 20px;
             transition: color 0.3s;
         }
         .nav-links li a:hover {
@@ -104,6 +100,25 @@
             cursor: pointer;
             color: var(--dark);
             line-height: 1;
+        }
+
+        /* Language Switcher Styles */
+        .language-switcher {
+            position: relative;
+        }
+        .language-switcher .lang-select {
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--dark);
+            padding: 5px 10px;
+        }
+        .language-switcher .lang-select:hover {
+            border-color: var(--pink);
         }
 
         main {
@@ -185,7 +200,7 @@
         .footer-column p, .footer-column a {
             font-size: 15px;
             line-height: 1.6;
-            color: var(--muted);
+            color: #7b7b7b;
             text-decoration: none;
             display: block;
             margin-bottom: 8px;
@@ -356,8 +371,6 @@
         }
 
         /* Responsive Media Queries */
-
-        /* Tablet and Mobile View (max-width: 768px) */
         @media (max-width: 768px) {
             .navbar {
                 padding: 15px 20px;
@@ -365,10 +378,10 @@
             }
             
             .nav-links {
-                display: none; /* Hide nav links by default on small screens */
+                display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 100px; /* Position below the logo */
+                top: 100px;
                 left: 0;
                 width: 100%;
                 background: #fff;
@@ -379,7 +392,7 @@
             }
             
             .nav-links.active {
-                display: flex; /* Show nav links when active class is added by JS */
+                display: flex;
             }
 
             .nav-links li {
@@ -396,7 +409,7 @@
             }
 
             .nav-toggle {
-                display: block; /* Show the hamburger icon on small screens */
+                display: block;
             }
             
             .about-us-container {
@@ -426,7 +439,6 @@
             }
         }
 
-        /* Mobile View (max-width: 480px) */
         @media (max-width: 480px) {
             .navbar .logo {
                 height: 60px;
@@ -454,12 +466,18 @@
 <body>
 
 <header class="navbar">
-    <a href="index.html"><img src="image/a-vector-graphic-showcasing-a-refined-lo_4kd9AaOOTlORYWdj4z6Utw_jmEZzTmkQuSTg2YTG7PEnA.jpeg" alt="logo" class="logo"></a>
+    <a href="index.html"><img src="image/12345.png" alt="logo" class="logo"></a>
     <nav>
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#" class="login-btn" id="show-login-popup">Login</a></li>
-            <li><a href="#desktop-register-card" class="btn-register">Register</a></li>
+            <li><a href="index.html" data-lang-key="nav_home">Home</a></li>
+            <li><a href="#" class="login-btn" id="show-login-popup" data-lang-key="nav_login">Login</a></li>
+            <li><a href="index.html#desktop-register-card" class="btn-register" data-lang-key="nav_register">Register</a></li>
+            <li class="language-switcher">
+                <select id="language-selector" class="lang-select">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </li>
         </ul>
     </nav>
     <div class="nav-toggle" id="nav-toggle">
@@ -470,29 +488,29 @@
 <main>
     <section class="about-us-container">
         <div class="decorative-line"></div>
-        <h1>About Us</h1>
+        <h1 data-lang-key="about_title">About Us</h1>
         <div class="content">
-            <h2>Assalum-O-Alaikum Believers !!!</h2>
-            <p>
+            <h2 data-lang-key="greeting">Assalum-O-Alaikum Believers !!!</h2>
+            <p data-lang-key="p1">
                 How many times have you imagined walking hand in hand with your future life partner, dreaming about a life filled with love, laughter, and unforgettable memories? We all have those moments when weddings make our hearts melt — the radiant smiles, the shy glances, and the unspoken promises between the bride and groom. Isn’t it heartwarming to picture yourself in that place someday?
             </p>
-            <p>
+            <p data-lang-key="p2">
                 Marriage is not just about two people coming together — it’s about building a home, weaving dreams, and creating a future hand in hand. And we know how overwhelming this journey can sometimes feel. From endless thoughts about compatibility to the desire of finding someone who truly understands you — the path towards a happy marriage is both beautiful and challenging.
             </p>
-            <p>
+            <p data-lang-key="p3">
                 At Salmani Nikah Bureau, we believe that finding the right match should be a journey of trust, comfort, and happiness. Our mission is simple — to help you meet the one who is destined to walk this life with you.
             </p>
-            <p>
+            <p data-lang-key="p4">
                 Life is too precious to live alone, and every joy becomes more meaningful when shared with a partner. That’s why we’ve carefully designed our platform to make your search easier, smoother, and more reliable. With advanced filters — based on education, location, values, or lifestyle — you can focus only on what truly matters to you.
             </p>
-            <p>
+            <p data-lang-key="p5">
                 We understand that marriage is one of the biggest steps of your life. It’s not just about you but also about your families, traditions, and values. That’s why authenticity and trust form the foundation of our services. Every profile goes through a proper verification process to ensure that your journey towards marriage remains safe, genuine, and transparent.
             </p>
-            <p>
+            <p data-lang-key="p6">
                 For years, we have been blessed to witness countless happy beginnings. The joy in the eyes of our brides and grooms and the satisfaction of their families motivate us to keep growing as one big family.
                 So, if you are ready to write your own love story, let us help you turn dreams into reality. Because marriages are not just made in heaven — they are nurtured here with love, trust, and commitment.
             </p>
-            <p>
+            <p data-lang-key="p7">
                 Salmani Nikah Bureau — where your journey to a beautiful beginning starts.
             </p>
         </div>
@@ -501,29 +519,29 @@
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-column">
-            <h4>ABOUT Salmani Nikah Bureau</h4>
-            <p>At Salmani Nikah Bureau, we are committed to helping you find the one you are destined to spend the rest of your life with. Our goal is to make Muslim matrimony a simple, secure, and successful journey for you.</p>
+            <h4 data-lang-key="footer_about_title">ABOUT Salmani Nikah Bureau</h4>
+            <p data-lang-key="footer_about_desc">At Salmani Nikah Bureau, we are committed to helping you find the one you are destined to spend the rest of your life with. Our goal is to make Muslim matrimony a simple, secure, and successful journey for you.</p>
         </div>
         <div class="footer-column">
-            <h4>COMPANY</h4>
-            <a href="#">About Us</a>
-            <a href="#">Career</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Child Safety</a>
+            <h4 data-lang-key="footer_company">COMPANY</h4>
+            <a href="#" data-lang-key="footer_about_us">About Us</a>
+            <a href="#" data-lang-key="footer_career">Career</a>
+            <a href="#" data-lang-key="footer_contact">Contact Us</a>
+            <a href="#" data-lang-key="footer_safety">Child Safety</a>
         </div>
         <div class="footer-column">
-            <h4>HELP</h4>
-            <a href="#">FAQs</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Privacy Policy</a>
+            <h4 data-lang-key="footer_help">HELP</h4>
+            <a href="#" data-lang-key="footer_faqs">FAQs</a>
+            <a href="#" data-lang-key="footer_terms">Terms & Conditions</a>
+            <a href="#" data-lang-key="footer_privacy">Privacy Policy</a>
         </div>
         <div class="footer-column">
-            <h4>FOLLOW US</h4>
+            <h4 data-lang-key="footer_follow">FOLLOW US</h4>
             <div class="social-icons">
                 <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 8.1c-.2-.7-.7-1.3-1.4-1.5-1.2-.5-6-.5-9.1-.5s-7.9-.1-9.1.5c-.7.2-1.2.8-1.4 1.5-.5 2.1-.5 6.3-.5 6.9 0 .6 0 4.8.5 6.9.2.7.7 1.3 1.4 1.5 1.2.5 6 .5 9.1.5s7.9.1 9.1-.5c.7-.2 1.2-.8 1.4-1.5.5-2.1.5-6.3.5-6.9 0-.6 0-4.8-.5-6.9zM9.5 15.5V8.5L16 12l-6.5 3.5z"/></svg></a>
                 <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 5.8c.6 0 1.1.5 1.1 1.1s-.5 1.1-1.1 1.1-1.1-.5-1.1-1.1.5-1.1 1.1-1.1zM12 6.8c-2.4 0-4.4 2-4.4 4.4s2 4.4 4.4 4.4 4.4-2 4.4-4.4-2-4.4-4.4-4.4zm0 6.6c-1.2 0-2.2-.9-2.2-2.2s.9-2.2 2.2-2.2 2.2.9 2.2 2.2-.9 2.2-2.2 2.2z"/></svg></a>
                 <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.64 4.31a.5.5 0 00-.7-.14l-2.7 1.2-.9-1.9c-.1-.2-.4-.3-.7-.2l-2 1.2a.5.5 0 00-.3.6v.1l-1.6 1.1c-.2.1-.4.2-.5.5-.1.3-.1.6.1.9l.4.7c.3.5.8 1 1.5 1.2s1.4.1 2-.2l.7-.4c.3-.2.5-.3.8-.4l1.3-.3c.4-.1.7-.2 1-.4l.6-.4a.5.5 0 00.3-.6l-.4-.7a.5.5 0 00-.7-.3l-1.3.3c-.2.1-.4.2-.6.3-.1.1-.2.2-.3.3l-.6.4c-.1.1-.2.2-.3.3-.3.1-.6.2-.8.2-.3 0-.5 0-.7-.1-.2-.1-.4-.2-.5-.4-.1-.2-.1-.4 0-.6l.1-.2c.1-.2.2-.4.4-.5l.4-.2c.3-.1.6-.2.9-.3l1.1-.3.8-.3c.2-.1.4-.2.6-.4.2-.2.4-.4.5-.6.1-.2.1-.4 0-.6l-1.2-2.7a.5.5 0 00-.1-.7zM12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm-1.8-6.6l-2.4-2.8a.5.5 0 010-.7l.9-.8a.5.5 0 01.7 0l1.7 1.9 2.9-3.2a.5.5 0 01.7 0l.9.8a.5.5 0 010 .7l-3.6 4a.5.5 0 01-.7 0z"/></svg></a>
-                <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.8 3.5a.7.7 0 00-.7-.7h-1.6c-1.3 0-2.4 1-2.4 2.4V8c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2a.7.7 0 00-.7-.7H9.2c-1.3 0-2.4 1-2.4 2.4V10c0 .4-.2.7-.5.7H6c-.4 0-.7-.3-.7-.7V7.5a.7.7 0 00-.7-.7H3.5a.7.7 0 00-.7.7V10c0 .4-.2.7-.5.7H2c-.4 0-.7-.3-.7-.7v-3.3c0-1.3-1-2.4-2.4-2.4h-1.6a.7.7 0 00-.7.7v1.6c0 1.3 1 2.4 2.4 2.4H3c.4 0 .7-.3.7-.7V8c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4h1.6c1.3 0 2.4-1 2.4-2.4V11c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4H19.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6c-1.3 0-2.4 1-2.4 2.4v2.4c0 .4.2.7.5.7h.3c.4 0 .7-.3.7-.7v-2.4c0-1.3 1-2.4 2.4-2.4h1.6a.7.7 0 00.7.7zM18.8 3.5v1.6c0 1.3 1 2.4 2.4 2.4h1.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6zM15.4 7c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2c0-1.3 1-2.4 2.4-2.4h1.6c.4 0 .7.3.7.7v1.6c0 1.3-1 2.4-2.4 2.4H15.4z"/></svg></a>
+                <a href="#"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.8 3.5a.7.7 0 00-.7-.7h-1.6c-1.3 0-2.4 1-2.4 2.4V8c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2a.7.7 0 00-.7-.7H9.2c-1.3 0-2.4 1-2.4 2.4V10c0 .4-.2.7-.5.7H6c-.4 0-.7-.3-.7-.7V7.5a.7.7 0 00-.7-.7H3.5a.7.7 0 00-.7.7V10c0 .4-.2.7-.5.7H2c-.4 0-.7-.3-.7-.7v-3.3c0-1.3-1-2.4-2.4-2.4h-1.6a.7.7 0 00-.7.7v1.6c0 1.3 1 2.4 2.4 2.4H3c.4 0 .7-.3.7-.7V8c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4h1.6c1.3 0 2.4-1 2.4-2.4V11c0-.4.2-.7.5-.7h.3c.4 0 .7.3.7.7v2.4c0 1.3 1 2.4 2.4 2.4H19.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6c-1.3 0-2.4 1-2.4 2.4v2.4c0 .4.2.7.5.7h.3c.4 0 .7-.3.7-.7v-2.4c0-1.3 1-2.4 2.4-2.4h1.6a.7.7 0 00.7.7zM18.8 3.5v1.6c0 1.3 1 2.4 2.4 2.4h1.6a.7.7 0 00.7-.7v-1.6c0-1.3-1-2.4-2.4-2.4h-1.6zM15.4 7c0 .4-.2.7-.5.7h-.3c-.4 0-.7-.3-.7-.7V5.2c0-1.3 1-2.4 2.4-2.4h1.6c.4 0 .7.3.7.7v1.6c0 1.3-1 2.4-2.4-2.4H15.4z"/></svg></a>
             </div>
         </div>
     </div>
@@ -531,27 +549,27 @@
 <div class="modal-overlay" id="login-modal-overlay">
     <div class="modal-content">
         <button class="close-btn" id="close-modal-btn">&times;</button>
-        <h2>Login to your account</h2>
+        <h2 data-lang-key="login_title">Login to your account</h2>
         <form action="#">
             <div class="form-group">
-                <label for="email">Email address</label>
+                <label for="email" data-lang-key="login_email">Email address</label>
                 <input type="email" id="email" required>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password" data-lang-key="login_password">Password</label>
                 <input type="password" id="password" required>
             </div>
             <div class="form-options">
                 <div class="remember-me">
                     <input type="checkbox" id="remember">
-                    <label for="remember">Remember me</label>
+                    <label for="remember" data-lang-key="login_remember">Remember me</label>
                 </div>
-                <a href="#" class="forgot-password">Forgot Password</a>
+                <a href="#" class="forgot-password" data-lang-key="login_forgot">Forgot Password</a>
             </div>
-            <button type="submit" class="login-submit-btn">Login</button>
+            <button type="submit" class="login-submit-btn" data-lang-key="login_button">Login</button>
         </form>
         <p class="register-link">
-            New at Nikah Forever? <a href="#">Register Now</a>
+            <span data-lang-key="login_new_user">New at Nikah Forever?</span> <a href="#" data-lang-key="login_register_now">Register Now</a>
         </p>
     </div>
 </div>
@@ -593,6 +611,104 @@
         navLinks.classList.toggle('active');
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const languageSelector = document.getElementById('language-selector');
+
+        const translations = {
+            'en': {
+                'nav_home': 'Home',
+                'nav_login': 'Login',
+                'nav_register': 'Register',
+                'about_title': 'About Us',
+                'greeting': 'Assalum-O-Alaikum Believers !!!',
+                'p1': 'How many times have you imagined walking hand in hand with your future life partner, dreaming about a life filled with love, laughter, and unforgettable memories? We all have those moments when weddings make our hearts melt — the radiant smiles, the shy glances, and the unspoken promises between the bride and groom. Isn’t it heartwarming to picture yourself in that place someday?',
+                'p2': 'Marriage is not just about two people coming together — it’s about building a home, weaving dreams, and creating a future hand in hand. And we know how overwhelming this journey can sometimes feel. From endless thoughts about compatibility to the desire of finding someone who truly understands you — the path towards a happy marriage is both beautiful and challenging.',
+                'p3': 'At Salmani Nikah Bureau, we believe that finding the right match should be a journey of trust, comfort, and happiness. Our mission is simple — to help you meet the one who is destined to walk this life with you.',
+                'p4': 'Life is too precious to live alone, and every joy becomes more meaningful when shared with a partner. That’s why we’ve carefully designed our platform to make your search easier, smoother, and more reliable. With advanced filters — based on education, location, values, or lifestyle — you can focus only on what truly matters to you.',
+                'p5': 'We understand that marriage is one of the biggest steps of your life. It’s not just about you but also about your families, traditions, and values. That’s why authenticity and trust form the foundation of our services. Every profile goes through a proper verification process to ensure that your journey towards marriage remains safe, genuine, and transparent.',
+                'p6': 'For years, we have been blessed to witness countless happy beginnings. The joy in the eyes of our brides and grooms and the satisfaction of their families motivate us to keep growing as one big family. So, if you are ready to write your own love story, let us help you turn dreams into reality. Because marriages are not just made in heaven — they are nurtured here with love, trust, and commitment.',
+                'p7': 'Salmani Nikah Bureau — where your journey to a beautiful beginning starts.',
+                'footer_about_title': 'ABOUT Salmani Nikah Bureau',
+                'footer_about_desc': 'At Salmani Nikah Bureau, we are committed to helping you find the one you are destined to spend the rest of your life with. Our goal is to make Muslim matrimony a simple, secure, and successful journey for you.',
+                'footer_company': 'COMPANY',
+                'footer_about_us': 'About Us',
+                'footer_career': 'Career',
+                'footer_contact': 'Contact Us',
+                'footer_safety': 'Child Safety',
+                'footer_help': 'HELP',
+                'footer_faqs': 'FAQs',
+                'footer_terms': 'Terms & Conditions',
+                'footer_privacy': 'Privacy Policy',
+                'footer_follow': 'FOLLOW US',
+                'login_title': 'Login to your account',
+                'login_email': 'Email address',
+                'login_password': 'Password',
+                'login_remember': 'Remember me',
+                'login_forgot': 'Forgot Password',
+                'login_button': 'Login',
+                'login_new_user': 'New at Nikah Forever?',
+                'login_register_now': 'Register Now'
+            },
+            'hi': {
+                'nav_home': 'होम',
+                'nav_login': 'लॉग इन करें',
+                'nav_register': 'रजिस्टर करें',
+                'about_title': 'हमारे बारे में',
+                'greeting': 'अस्सलामु अलैकुम विश्वासियों !!!',
+                'p1': 'आपने कितनी बार अपने होने वाले जीवनसाथी के साथ हाथ में हाथ डालकर चलने की कल्पना की है, प्यार, हँसी और अविस्मरणीय यादों से भरे जीवन का सपना देखा है? हम सभी के जीवन में ऐसे पल आते हैं जब शादियाँ हमारे दिलों को पिघला देती हैं - दुल्हन और दूल्हे के बीच की उज्ज्वल मुस्कान, शर्मीली नज़रें और अनकहे वादे। क्या यह कल्पना करना सुखद नहीं है कि आप भी किसी दिन उस जगह पर होंगे?',
+                'p2': 'विवाह सिर्फ दो लोगों का एक साथ आना नहीं है - यह एक घर बनाने, सपने बुनने और हाथ में हाथ डालकर भविष्य बनाने के बारे में है। और हम जानते हैं कि यह यात्रा कभी-कभी कितनी भारी लग सकती है। अनुकूलता के बारे में अंतहीन विचारों से लेकर किसी ऐसे व्यक्ति को खोजने की इच्छा तक जो आपको वास्तव में समझता है - एक सुखी विवाह की राह सुंदर और चुनौतीपूर्ण दोनों है।',
+                'p3': 'सलमानी निकाह ब्यूरो में, हम मानते हैं कि सही साथी ढूंढना विश्वास, आराम और खुशी की यात्रा होनी चाहिए। हमारा मिशन सरल है - आपको उस व्यक्ति से मिलाने में मदद करना जो आपके साथ इस जीवन को चलने के लिए किस्मत में है।',
+                'p4': 'जीवन अकेले जीने के लिए बहुत कीमती है, और हर खुशी एक साथी के साथ साझा करने पर और अधिक सार्थक हो जाती है। इसीलिए हमने आपकी खोज को आसान, सहज और अधिक विश्वसनीय बनाने के लिए अपने मंच को सावधानीपूर्वक डिज़ाइन किया है। शिक्षा, स्थान, मूल्यों या जीवनशैली पर आधारित उन्नत फ़िल्टर के साथ - आप केवल उन चीज़ों पर ध्यान केंद्रित कर सकते हैं जो आपके लिए वास्तव में मायने रखती हैं।',
+                'p5': 'हम समझते हैं कि विवाह आपके जीवन के सबसे बड़े कदमों में से एक है। यह सिर्फ आपके बारे में नहीं है, बल्कि आपके परिवारों, परंपराओं और मूल्यों के बारे में भी है। इसीलिए प्रामाणिकता और विश्वास हमारी सेवाओं की नींव बनाते हैं। विवाह की ओर आपकी यात्रा सुरक्षित, वास्तविक और पारदर्शी बनी रहे, यह सुनिश्चित करने के लिए प्रत्येक प्रोफ़ाइल एक उचित सत्यापन प्रक्रिया से गुजरती है।',
+                'p6': 'वर्षों से, हमें अनगिनत सुखद शुरुआत देखने का सौभाग्य मिला है। हमारे दुल्हनों और दूल्हों की आँखों में खुशी और उनके परिवारों की संतुष्टि हमें एक बड़े परिवार के रूप में बढ़ते रहने के लिए प्रेरित करती है। इसलिए, यदि आप अपनी प्रेम कहानी लिखने के लिए तैयार हैं, तो हमें सपनों को हकीकत में बदलने में आपकी मदद करने दें। क्योंकि शादियाँ सिर्फ स्वर्ग में नहीं बनतीं - वे यहाँ प्यार, विश्वास और प्रतिबद्धता के साथ पोषित होती हैं।',
+                'p7': 'सलमानी निकाह ब्यूरो - जहाँ एक खूबसूरत शुरुआत की आपकी यात्रा शुरू होती है।',
+                'footer_about_title': 'सलमानी निकाह ब्यूरो के बारे में',
+                'footer_about_desc': 'सलमानी निकाह ब्यूरो में, हम आपको वह व्यक्ति खोजने में मदद करने के लिए प्रतिबद्ध हैं जिसके साथ आप अपना शेष जीवन बिताने के लिए किस्मत में हैं। हमारा लक्ष्य मुस्लिम विवाह को आपके लिए एक सरल, सुरक्षित और सफल यात्रा बनाना है।',
+                'footer_company': 'कंपनी',
+                'footer_about_us': 'हमारे बारे में',
+                'footer_career': 'करियर',
+                'footer_contact': 'हमसे संपर्क करें',
+                'footer_safety': 'बाल सुरक्षा',
+                'footer_help': 'सहायता',
+                'footer_faqs': 'अक्सर पूछे जाने वाले प्रश्न',
+                'footer_terms': 'नियम और शर्तें',
+                'footer_privacy': 'गोपनीयता नीति',
+                'footer_follow': 'हमें फॉलो करें',
+                'login_title': 'अपने खाते में प्रवेश करें',
+                'login_email': 'ईमेल पता',
+                'login_password': 'पासवर्ड',
+                'login_remember': 'मुझे याद रखना',
+                'login_forgot': 'पासवर्ड भूल गए',
+                'login_button': 'लॉग इन करें',
+                'login_new_user': 'निकाह फॉरएवर में नए हैं?',
+                'login_register_now': 'अभी पंजीकरण करें'
+            }
+        };
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('language', lang);
+            languageSelector.value = lang;
+        };
+
+        languageSelector.addEventListener('change', (event) => {
+            setLanguage(event.target.value);
+        });
+
+        // On page load, check for saved language
+        const savedLang = localStorage.getItem('language') || 'en';
+        setLanguage(savedLang);
+    });
+</script>
+
 
 </body>
 </html>
